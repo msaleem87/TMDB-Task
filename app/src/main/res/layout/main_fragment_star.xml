@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="viewModel"
+      type="sa.net.ibtikar.android.view.ui.main.MainActivityViewModel" />
+
+    <variable
+      name="adapter"
+      type="sa.net.ibtikar.android.view.adapter.PeopleAdapter" />
+  </data>
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:clipToPadding="false"
+      app:adapter="@{adapter}"
+      app:adapterPersonList="@{viewModel.peopleLiveData}"
+      app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+      app:paginationPersonList="@{viewModel}"
+      app:spanCount="2"
+      app:toast="@{viewModel.toastLiveData}"
+      tools:listitem="@layout/item_person" />
+  </RelativeLayout>
+</layout>
